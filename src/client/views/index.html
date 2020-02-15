@@ -21,13 +21,13 @@
             <section>
                 <form class="" onsubmit="return Client.performAction(event)">
                     <legend>Below put in the URL for the article sentiment evaluation.</legend>
-                    <input id="hyperlink" type="text" name="input" value="" placeholder="Use English webpage">
+                    <input id="hyperlink" type="url" name="input" value="" placeholder="Use English webpage">
                     <button id="submit" type="submit" name="submit" value="submit" onclick="return Client.performAction(event)" onsubmit="return Client.performAction(event)">Submit</button>
                 </form>
             <div id="results">
                 <strong>Analysis Results:</strong>
                     <table class="result">
-                        <tr><td colspan="2">Submitted URL: www.google.com</td></tr>
+                        <tr><td id="newURL" colspan="2">Submitted URL: www.google.com</td></tr>
                         <tr><td>Polarity</td><td id="newPo"></td></tr>
                         <tr><td>Positive</td><td id="newScore"></td></tr>
                     </table> 
