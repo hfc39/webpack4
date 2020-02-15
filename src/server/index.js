@@ -23,19 +23,31 @@ console.log(__dirname)
 // designates what port the app will listen to for incoming requests
 const port = 8000;
 app.listen(port, function () {
-    console.log('Example app listening on port'${port});
-})
+    console.log(`Example app listening on port: ${port}`);
+});
 
 app.get('/', function (req, res) {
     res.sendFile('dist/index.html')
 })
+
+//GET request practice
+app.get('/all', (req, res)=>{
+    res.send(projectData)
+});
+
+//POST request practice
+const userData = [];
+app.post('/addUser', (req, res)=>{
+    res.send("post been received")
+    console.log(req.body)
+    data.push(req.body)
+});
 
 const aylien = require("aylien_textapi");
 const texapi = new aylien({
     application_id: process.env.API_ID,
     application_key: process.env.API_KEY
   });
-
 
 app.get('/test', function (req, res) {
     res.send(mockAPIResponse)

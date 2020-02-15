@@ -1,0 +1,41 @@
+$font-stack1: 'Roboto Condensed', sans-serif;
+$color2: #45a29e;
+$color3: #1f2833;
+
+form {
+    border: 2px solid #545454;
+    border-radius: 3px;
+    padding: 40px;
+    font-family: $font-stack1;
+    line-height: 1.5em;
+    color: $color2;
+    background-color: $color3;
+    
+}
+
+input {
+    padding: 5px 20px;
+    width: 100%;
+    line-height: 16px;
+    margin: 10px 0;
+    background-color: #c5c6c7;
+    color: $color2;
+    font-family: $font-stack1;
+    font-size: 15px;
+    
+}
+
+button {
+    color: $color3;
+    text-align: center;
+    margin: 0 auto;
+    width: 150px;
+    align-items: center;
+    text-transform: uppercase;
+    background-color: $color2;
+    border-radius: 5px;
+    border: 0px;
+    font-weight: 700;
+    font-size: 15px;
+    font-family: $font-stack1;
+}

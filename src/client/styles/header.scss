@@ -1,0 +1,28 @@
+$font-stack1: 'Roboto Condensed', sans-serif;
+$color1: #66fcf1;
+
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 40px;
+    color: $color1;
+    font-family: $font-stack1;
+    
+    div {
+        margin:10px 30px;
+    }
+}
+
+h1 {
+    font-size: 42px;
+    line-height: normal;
+    font-weight: 600;
+
+}
+
+h3 {
+    font-size: 20px;
+    line-height: normal;
+}
+

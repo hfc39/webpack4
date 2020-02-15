@@ -1,0 +1,62 @@
+$font-stack1: 'Roboto Condensed', sans-serif;
+$color1: #66fcf1;
+$color2: #45a29e;
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 90vh;
+    background-color: #0b0c10;
+    margin: 30px auto;
+    align-items: center;
+}
+
+main {
+    flex: 1.5;
+}
+
+section {
+    max-width: 800px;
+    min-width: 450px;
+    margin: 50px auto auto;
+    display: flex;
+    flex-direction: column;
+    background-color: #0b0c10;
+
+    #results {
+     // display: none;
+        font-family: $font-stack1;
+        line-height: 1.5em;
+        color: $color2;
+        margin: 15px 42px;
+    }
+}
+    
+
+
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: $color1;
+    font-family: $font-stack1;
+}
+
+.result {
+    text-align: left;
+    width: 100%;
+
+    td {
+        padding: 5px 0px;
+        border-bottom: 1px solid steelblue;
+    }
+
+    tr:hover {
+        background-color: #c5c6c7;
+    }
+
+}

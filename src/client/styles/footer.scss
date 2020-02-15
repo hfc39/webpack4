@@ -1,0 +1,17 @@
+$font-stack1: 'Roboto Condensed', sans-serif;
+$color1: #66fcf1;
+$color2: #45a29e;
+
+footer {
+    font-family: $font-stack1;
+    color: $color2;
+    font-size: 12px;
+    margin:10px 20px;
+
+    a {
+        color:$color2;
+    }
+    a:hover {
+        color: $color1;
+    }
+}
