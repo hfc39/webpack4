@@ -14,6 +14,10 @@ const cors = require('cors');
 app.use(cors());
 app.use(express.static('dist'))
 
+/*dotenv*/
+const dotenv = require('dotenv');
+dotenv.config();
+
 console.log(__dirname)
 
 // designates what port the app will listen to for incoming requests
@@ -26,6 +30,11 @@ app.get('/', function (req, res) {
     res.sendFile('dist/index.html')
 })
 
+const aylien = require("aylien_textapi");
+const texapi = new aylien({
+    application_id: process.env.API_ID,
+    application_key: process.env.API_KEY
+  });
 
 
 app.get('/test', function (req, res) {
