@@ -1,16 +1,10 @@
-function checkForName(inputText) {
-    console.log("::: Running checkForName :::", inputText);
-    let names = [
-        "Picard",
-        "Janeway",
-        "Kirk",
-        "Archer",
-        "Georgiou"
-    ]
-
-    if(names.includes(inputText)) {
-        alert("Welcome, Captain!")
+function urlValidate(url) {
+    const reg =/^(https?:\/\/)?(\w+\.)?(\w+\.)(\w+)([\w\?\&\=\-]?)*(\/[\w\?\&\=\-]*)*$/g
+    if(reg.test(url)){
+        return true;
+    } else {
+        return false;
     }
-}
+};
 
-export { checkForName }
+export { urlValidate }

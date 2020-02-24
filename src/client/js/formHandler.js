@@ -14,8 +14,8 @@ function handleSubmit(event) {
         try{
             const newData = response.json();
             document.getElementById('newURL').innerText = `Submitted URL:${newData.URL}`;
-            document.getElementById('newPo').innerText = newData.;
-            document.getElementById('newScore').innerText =;
+            document.getElementById('newPo').innerText = newData.polarity;
+            document.getElementById('newScore').innerText = polarity_confidence;
         } catch (error){
             console.log('failed at sendDataAylien');
         }
@@ -29,4 +29,4 @@ function handleSubmit(event) {
     })
 }
 
-export { handleSubmit }
+//export { handleSubmit }

@@ -3,11 +3,11 @@
     <head>
         <meta charset="utf-8">
         <title>Test</title>
-        <link rel="stylesheet" href="/styles/resets.css">
-        <link rel="stylesheet" href="/styles/base.css">
-        <link rel="stylesheet" href="/styles/header.css">
-        <link rel="stylesheet" href="/styles/form.css">
-        <link rel="stylesheet" href="/styles/footer.css">
+        <link rel="stylesheet" href="/Users/carmen39/Desktop/webpack_4/src/client/styles/resets.scss">
+        <link rel="stylesheet" href="/Users/carmen39/Desktop/webpack_4/src/client/styles/base.scss">
+        <link rel="stylesheet" href="/Users/carmen39/Desktop/webpack_4/src/client/styles/header.scss">
+        <link rel="stylesheet" href="/Users/carmen39/Desktop/webpack_4/src/client/styles/form.scss">
+        <link rel="stylesheet" href="/Users/carmen39/Desktop/webpack_4/src/client/styles/footer.scss">
     </head>
 
     <body>
@@ -19,10 +19,10 @@
 
         <main>
             <section>
-                <form class="" onsubmit="return Client.performAction(event)">
+                <form class="" onsubmit="return handleSubmit(event)">
                     <legend>Below put in the URL for the article sentiment evaluation.</legend>
                     <input id="hyperlink" type="url" name="input" value="" placeholder="Use English webpage">
-                    <button id="submit" type="submit" name="submit" value="submit" onclick="return Client.performAction(event)" onsubmit="return Client.performAction(event)">Submit</button>
+                    <button id="submit" type="submit" name="submit" value="submit" >Submit</button>
                 </form>
             <div id="results">
                 <strong>Analysis Results:</strong>

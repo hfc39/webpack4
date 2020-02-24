@@ -26,21 +26,15 @@ app.listen(port, function () {
     console.log(`Example app listening on port: ${port}`);
 });
 
+/*
 app.get('/', function (req, res) {
-    res.sendFile('dist/index.html')
+    res.sendFile('/Users/carmen39/Desktop/webpack_4/src/client/views/index.html')
 })
+*/
 
 //GET request practice
 app.get('/all', (req, res)=>{
     res.send(projectData)
-});
-
-//POST request practice
-const userData = [];
-app.post('/addUser', (req, res)=>{
-    res.send("post been received")
-    console.log(req.body)
-    data.push(req.body)
 });
 
 const aylien = require("aylien_textapi");
@@ -48,7 +42,26 @@ const texapi = new aylien({
     application_id: process.env.API_ID,
     application_key: process.env.API_KEY
   });
-
+/*
 app.get('/test', function (req, res) {
     res.send(mockAPIResponse)
 })
+*/
+
+//POST request
+app.post('/aylien',(res, req)=>{
+    textapi.sentiment({
+        url: req.body.url,
+        mode: 'document'
+      }, function(error, response) {
+        if (error === null) {
+          projectData.url = req.body.url;
+          projectData.polarity = response.polarity;
+          projectData.polarity_confidence = response.polarity_confidence;
+          res.send(projectData);
+          console.log(projectData)
+        } else {
+              console.log(error);
+        }
+          });
+    });
