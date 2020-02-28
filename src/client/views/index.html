@@ -19,10 +19,10 @@
 
         <main>
             <section>
-                <form class="" onsubmit="return handleSubmit(event)">
+                <form class="" onsubmit="return urlValidate(url)">
                     <legend>Below put in the URL for the article sentiment evaluation.</legend>
                     <input id="hyperlink" type="url" name="input" value="" placeholder="Use English webpage">
-                    <button id="submit" type="submit" name="submit" value="submit" >Submit</button>
+                    <input id="submit" type="submit" name="submit" value="Submit" >
                 </form>
             <div id="results">
                 <strong>Analysis Results:</strong>

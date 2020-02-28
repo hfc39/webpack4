@@ -23,19 +23,20 @@ input {
     font-family: $font-stack1;
     font-size: 15px;
     
+    #button {
+        color: $color3;
+        text-align: center;
+        margin: 0 auto;
+        width: 150px;
+        align-items: center;
+        text-transform: uppercase;
+        background-color: $color2;
+        border-radius: 5px;
+        border: 0px;
+        font-weight: 700;
+        font-size: 15px;
+        font-family: $font-stack1;
+    }
+    
 }
 
-button {
-    color: $color3;
-    text-align: center;
-    margin: 0 auto;
-    width: 150px;
-    align-items: center;
-    text-transform: uppercase;
-    background-color: $color2;
-    border-radius: 5px;
-    border: 0px;
-    font-weight: 700;
-    font-size: 15px;
-    font-family: $font-stack1;
-}
