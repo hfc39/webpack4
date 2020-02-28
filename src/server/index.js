@@ -26,11 +26,10 @@ app.listen(port, function () {
     console.log(`Example app listening on port: ${port}`);
 });
 
-/*
+
 app.get('/', function (req, res) {
-    res.sendFile('/Users/carmen39/Desktop/webpack_4/src/client/views/index.html')
-})
-*/
+    res.sendFile('dist/index.html')
+});
 
 //GET request practice
 app.get('/all', (req, res)=>{
