@@ -1,32 +1,37 @@
-function handleSubmit(event) {
+export const handleSubmit = (event) => {
     event.preventDefault()
     // check what text was put into the form field
-    let formText = document.getElementById('input').value
-    const sendDataAylien = async function (url='', data={}) {
-        const response = await fetch ( '/aylien', {
-            method:'POST',
-            credentials:'same-origin',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-        });
-        try{
-            const newData = response.json();
-            document.getElementById('newURL').innerText = `Submitted URL:${newData.URL}`;
-            document.getElementById('newPo').innerText = newData.polarity;
-            document.getElementById('newScore').innerText = polarity_confidence;
-        } catch (error){
-            console.log('failed at sendDataAylien');
-        }
-    }
-
-    console.log("::: Form Submitted :::")
-    fetch('http://localhost:8080/test')
-    .then(res => res.json())
-    .then(function(res) {
-        document.getElementById('results').innerHTML = res.message
-    })
-}
-
-export { handleSubmit }
+    let formText = document.getElementById('hyperlink').value
+        if (Client.urlValidate(formText)) {
+            console.log('Lookslike an URL');
+            console.log("::: Form Submitted :::");
+            const sendDataAylien = async function (url='', data={}) {
+                const response = await fetch ( url , {
+                    method:'POST',
+                    credentials:'same-origin',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                });
+                try{
+                    const newData = response.json();
+                    return newData;
+                   
+                } catch (error){
+                    console.log('failed at sendDataAylien');
+                };
+            };
+            sendDataAylien('https://localhost:8080/aylien', { aUrl:formText })
+            .then(
+                function (res){
+                    console.log(res);
+                    const data = res.data;
+                    document.getElementById('newURL').innerText = `Submitted URL:${data.URL}`;
+                    document.getElementById('newPo').innerText = data.polarity;
+                    document.getElementById('newScore').innerText = data.polarity_confidence;
+                }
+            )
+        } else {
+            console.log('Not an URL');
+        }}

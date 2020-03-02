@@ -21,7 +21,7 @@ dotenv.config();
 console.log(__dirname)
 
 // designates what port the app will listen to for incoming requests
-const port = 8000;
+const port = 8081;
 app.listen(port, function () {
     console.log(`Example app listening on port: ${port}`);
 });
@@ -50,7 +50,7 @@ app.get('/test', function (req, res) {
 //POST request
 app.post('/aylien',(res, req)=>{
     textapi.sentiment({
-        url: req.body.url,
+        url: req.body.aUrl,
         mode: 'document'
       }, function(error, response) {
         if (error === null) {
