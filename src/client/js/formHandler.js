@@ -5,8 +5,8 @@ export const handleSubmit = (event) => {
         if (Client.urlValidate(formText)) {
             console.log('Lookslike an URL');
             console.log("::: Form Submitted :::");
-            const sendDataAylien = async function (url='', data={}) {
-                const response = await fetch ( url , {
+            const sendDataAylien = async function (url, data={}) {
+                const response = await fetch (url , {
                     method:'POST',
                     credentials:'same-origin',
                     headers: {
@@ -22,12 +22,12 @@ export const handleSubmit = (event) => {
                     console.log('failed at sendDataAylien');
                 };
             };
-            sendDataAylien('https://localhost:8080/aylien', { aUrl:formText })
+            sendDataAylien('/aylien', { aUrl:formText })
             .then(
                 function (res){
                     console.log(res);
                     const data = res.data;
-                    document.getElementById('newURL').innerText = `Submitted URL:${data.URL}`;
+                    document.getElementById('newURL').innerText = `Submitted URL:${formText}`;
                     document.getElementById('newPo').innerText = data.polarity;
                     document.getElementById('newScore').innerText = data.polarity_confidence;
                 }

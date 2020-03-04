@@ -54,10 +54,10 @@ app.post('/aylien',(res, req)=>{
         mode: 'document'
       }, function(error, response) {
         if (error === null) {
-          projectData.url = req.body.url;
-          projectData.polarity = response.polarity;
-          projectData.polarity_confidence = response.polarity_confidence;
-          res.send(projectData);
+          //projectData.url = req.body.url;
+          //projectData.polarity = response.polarity;
+          //projectData.polarity_confidence = response.polarity_confidence;
+          response.send(projectData);
           console.log(projectData)
         } else {
               console.log(error);
