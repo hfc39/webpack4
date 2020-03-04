@@ -48,17 +48,19 @@ app.get('/test', function (req, res) {
 */
 
 //POST request
-app.post('/aylien',(res, req)=>{
+app.post('/aylien',(req, res)=>{
     textapi.sentiment({
-        url: req.body.aUrl,
+        url: req.body.url,
         mode: 'document'
       }, function(error, response) {
         if (error === null) {
-          //projectData.url = req.body.url;
-          //projectData.polarity = response.polarity;
-          //projectData.polarity_confidence = response.polarity_confidence;
+          projectData.url = req.body.url;
+          projectData.polarity = response.polarity;
+          projectData.polarity_confidence = response.polarity_confidence;
+          
           response.send(projectData);
-          console.log(projectData)
+          //console.log(projectData)
+          //return res.statusCode(200).json(response);
         } else {
               console.log(error);
         }

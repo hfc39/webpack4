@@ -5,7 +5,7 @@ export const handleSubmit = (event) => {
         if (Client.urlValidate(formText)) {
             console.log('Lookslike an URL');
             console.log("::: Form Submitted :::");
-            const sendDataAylien = async function (url, data={}) {
+            const sendDataAylien = async (url, data={})=> {
                 const response = await fetch (url , {
                     method:'POST',
                     credentials:'same-origin',
@@ -15,14 +15,15 @@ export const handleSubmit = (event) => {
                     body: JSON.stringify(data),
                 });
                 try{
-                    const newData = response.json();
+                    console.log('problem is here.')
+                    const newData = await response.json();
                     return newData;
                    
                 } catch (error){
                     console.log('failed at sendDataAylien');
                 };
             };
-            sendDataAylien('/aylien', { aUrl:formText })
+            sendDataAylien('/aylien', {url:formText})
             .then(
                 function (res){
                     console.log(res);
