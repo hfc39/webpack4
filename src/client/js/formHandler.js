@@ -3,7 +3,7 @@ export const handleSubmit = (event) => {
     // check what text was put into the form field
     let formText = document.getElementById('hyperlink').value
         if (Client.urlValidate(formText)) {
-            console.log('Lookslike an URL');
+            console.log('Lookslike an URL !');
             console.log("::: Form Submitted :::");
             const sendDataAylien = async (url, data={})=> {
                 const response = await fetch (url , {
@@ -15,18 +15,20 @@ export const handleSubmit = (event) => {
                     body: JSON.stringify(data),
                 });
                 try{
-                    console.log('problem is here.')
-                    const newData = await response.json();
-                    return newData;                   
+                    console.log('Here.');
+                    const newData = response;
+                    console.log(newData);
+                    //return newData;                   
                 } catch (error){
-                    console.log('failed at sendDataAylien');
+                    console.log('??');
                 };
             };
             sendDataAylien('/aylien', {url:formText})
             .then(
                 function (res){
-                    console.log(res);
-                    const data = res.data;
+                    console.log('res');
+                    const data = res.json;
+                    console.log(data);
                     document.getElementById('newURL').innerText = `Submitted URL:${formText}`;
                     document.getElementById('newPo').innerText = data.polarity;
                     document.getElementById('newScore').innerText = data.polarity_confidence;

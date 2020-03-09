@@ -1,6 +1,6 @@
-projectData = {};
+const projectData = [];
 var path = require('path');
-const express = require('express')
+const express = require('express');
 //const mockAPIResponse = require('./mockAPI.js')
 const app = express();
 
@@ -37,7 +37,7 @@ app.get('/all', (req, res)=>{
 });
 
 const aylien = require("aylien_textapi");
-const texapi = new aylien({
+const textapi = new aylien({
     application_id: process.env.API_ID,
     application_key: process.env.API_KEY
   });
@@ -48,18 +48,16 @@ app.get('/test', function (req, res) {
 */
 
 //POST request
-app.post('/aylien',(req, res)=>{
+app.post('/aylien', function (req, res){
     textapi.sentiment({
         url: req.body.url,
-        mode: 'document'
+        mode: 'document',
       }, function(error, response) {
-        if (error === null) {
-          projectData.url = req.body.url;
-          projectData.polarity = response.polarity;
-          projectData.polarity_confidence = response.polarity_confidence;
-          //response.send(projectData);
-        } else {
-              console.log('there is an error'+ error);
+        if(error) {
+          return res.status(400).json(error);
         }
-          });
+        return res.status(200).json(response);
+      });
     });
+
+module.exports = app;
