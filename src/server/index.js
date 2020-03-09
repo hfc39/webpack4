@@ -29,7 +29,7 @@ app.listen(port, function () {
 
 app.get('/', function (req, res) {
     res.sendFile('../dist/index.html')
-});
+})
 
 //GET request practice
 app.get('/all', (req, res)=>{
@@ -54,12 +54,12 @@ app.post('/aylien',(req, res)=>{
         mode: 'document'
       }, function(error, response) {
         if (error === null) {
-          projectData["url"] = req.body.url;
-          projectData["polarity"] = response.polarity;
-          projectData["polarity_confidence"] = response.polarity_confidence;
-          response.send(projectData);
+          projectData.url = req.body.url;
+          projectData.polarity = response.polarity;
+          projectData.polarity_confidence = response.polarity_confidence;
+          //response.send(projectData);
         } else {
-              console.log(error);
+              console.log('there is an error'+ error);
         }
           });
     });
