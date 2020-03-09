@@ -54,13 +54,10 @@ app.post('/aylien',(req, res)=>{
         mode: 'document'
       }, function(error, response) {
         if (error === null) {
-          projectData.url = req.body.url;
-          projectData.polarity = response.polarity;
-          projectData.polarity_confidence = response.polarity_confidence;
-          
+          projectData["url"] = req.body.url;
+          projectData["polarity"] = response.polarity;
+          projectData["polarity_confidence"] = response.polarity_confidence;
           response.send(projectData);
-          //console.log(projectData)
-          //return res.statusCode(200).json(response);
         } else {
               console.log(error);
         }

@@ -17,8 +17,7 @@ export const handleSubmit = (event) => {
                 try{
                     console.log('problem is here.')
                     const newData = await response.json();
-                    return newData;
-                   
+                    return newData;                   
                 } catch (error){
                     console.log('failed at sendDataAylien');
                 };
