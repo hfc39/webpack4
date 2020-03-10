@@ -6,7 +6,7 @@ export const handleSubmit = (event) => {
             console.log('Looks like an URL');
             console.log("::: Form Submitted :::");
             const sendDataAylien = async ( url='', data={} )=> {
-                let response = await fetch (url , {
+                const response = await fetch (url , {
                     method:'POST',
                     credentials:'same-origin',
                     headers: {
@@ -21,7 +21,7 @@ export const handleSubmit = (event) => {
                     console.log(newData);
                     return newData;                   
                 } catch (error){
-                    console.log('failed at sendDataAylien');
+                    console.log('failed at sendDataAylien'+error);
                 };
             };
             sendDataAylien('/aylien', {url:formText})

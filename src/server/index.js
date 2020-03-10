@@ -1,4 +1,4 @@
-projectData = {};
+const projectData = [];
 var path = require('path');
 const express = require('express')
 //const mockAPIResponse = require('./mockAPI.js')
@@ -55,11 +55,19 @@ app.post('/aylien',(req, res)=>{
         mode: 'document'
       }, function(error, response) {
         if(error=== null) {
-          projectData["url"] = req.body.url;
-          projectData["polarity"] = response.polarity;
-          projectData["polarity_confidence"] = response.polarity_confidence;
-          console.log(projectData);        
-          res.send(projectData);  
+          newEntry = {
+            url:req.body.url,
+            polarity:response.polarity,
+            polarity_confidence:response.polarity_confidence
+          }
+          projectData.push(newEntry);
+          response.send(projectData);
+
+          //projectData["url"] = req.body.url;
+          //projectData["polarity"] = response.polarity;
+          //projectData["polarity_confidence"] = response.polarity_confidence;
+          console.log('Posted data'+projectData);        
+          //res.send(projectData);  
         } else {
           return res.status(400).json(error);
         };        
