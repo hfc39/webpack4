@@ -3,10 +3,10 @@ export const handleSubmit = (event) => {
     // check what text was put into the form field
     let formText = document.getElementById('hyperlink').value
         if (Client.urlValidate(formText)) {
-            console.log('Lookslike an URL');
+            console.log('Looks like an URL');
             console.log("::: Form Submitted :::");
-            const sendDataAylien = async (url, data={})=> {
-                const response = await fetch (url , {
+            const sendDataAylien = async ( url='', data={} )=> {
+                let response = await fetch (url , {
                     method:'POST',
                     credentials:'same-origin',
                     headers: {
@@ -14,9 +14,11 @@ export const handleSubmit = (event) => {
                     },
                     body: JSON.stringify(data),
                 });
+                let newData = await response.json();
+
                 try{
-                    console.log('problem is here.')
-                    const newData = await response.json();
+                    console.log('Here.');
+                    console.log(newData);
                     return newData;                   
                 } catch (error){
                     console.log('failed at sendDataAylien');
@@ -25,7 +27,7 @@ export const handleSubmit = (event) => {
             sendDataAylien('/aylien', {url:formText})
             .then(
                 function (res){
-                    console.log(res);
+                    console.log('res2');
                     const data = res.data;
                     document.getElementById('newURL').innerText = `Submitted URL:${formText}`;
                     document.getElementById('newPo').innerText = data.polarity;

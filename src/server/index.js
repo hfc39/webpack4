@@ -37,7 +37,7 @@ app.get('/all', (req, res)=>{
 });
 
 const aylien = require("aylien_textapi");
-const texapi = new aylien({
+const textapi = new aylien({
     application_id: process.env.API_ID,
     application_key: process.env.API_KEY
   });
@@ -49,17 +49,20 @@ app.get('/test', function (req, res) {
 
 //POST request
 app.post('/aylien',(req, res)=>{
+    console.log(req.body);
     textapi.sentiment({
         url: req.body.url,
         mode: 'document'
       }, function(error, response) {
-        if (error === null) {
+        if(error=== null) {
           projectData["url"] = req.body.url;
           projectData["polarity"] = response.polarity;
           projectData["polarity_confidence"] = response.polarity_confidence;
-          response.send(projectData);
+          console.log(projectData);        
+          res.send(projectData);  
         } else {
-              console.log(error);
-        }
-          });
-    });
+          return res.status(400).json(error);
+        };        
+          //response.send(projectData);    
+       });
+      });
