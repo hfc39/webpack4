@@ -2,8 +2,9 @@ export const handleSubmit = (event) => {
     event.preventDefault()
     // check what text was put into the form field
     let formText = document.getElementById('hyperlink').value
+    //let formText = JSON.parse(JSON.stringify(formTextO[0]))
         if (Client.urlValidate(formText)) {
-            console.log('Looks like an URL');
+            console.log('Looks like an URL!');
             console.log("::: Form Submitted :::");
             const sendDataAylien = async ( url='', data={} )=> {
                 const response = await fetch (url , {
@@ -14,24 +15,19 @@ export const handleSubmit = (event) => {
                     },
                     body: JSON.stringify(data),
                 });
-                let newData = await response.json();
 
-                try{
-                    console.log('Here.');
-                    console.log(newData);
-                    return newData;                   
-                } catch (error){
-                    console.log('failed at sendDataAylien'+error);
-                };
+                if(response) {
+                    try {
+                        a = JSON.parse(response);
+                    } catch (e) {
+                        alert(e);
+                    }
+                }
             };
-            sendDataAylien('/aylien', {url:formText})
+            sendDataAylien('http://localhost:8081/aylien', {url:formText})
             .then(
-                function (res){
-                    console.log('res2');
-                    const data = res.data;
-                    document.getElementById('newURL').innerText = `Submitted URL:${formText}`;
-                    document.getElementById('newPo').innerText = data.polarity;
-                    document.getElementById('newScore').innerText = data.polarity_confidence;
+                function (response){
+                    document.getElementById('newPo').innerHTML = response.polarity || "";
                 }
             )
         } else {
