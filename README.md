@@ -8,4 +8,3 @@ The goal of this project is to practice with:
 - Creating layouts and page design
 - Service workers
 - Using APIs and creating requests to external urls
-

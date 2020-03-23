@@ -28,7 +28,7 @@ app.listen(port, function () {
 
 
 app.get('/', function (req, res) {
-    res.sendFile('/Users/carmen39/Desktop/webpack_4/dist/index.html')
+    res.sendFile(path.resolve('dist/index.html'))
 });
 
 const aylien = require('aylien_textapi');
