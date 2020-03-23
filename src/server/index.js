@@ -28,11 +28,10 @@ app.listen(port, function () {
 
 
 app.get('/', function (req, res) {
-    res.sendFile('../dist/index.html')
+    res.sendFile('/Users/carmen39/Desktop/webpack_4/dist/index.html')
 });
 
-
-const aylien = require("aylien_textapi");
+const aylien = require('aylien_textapi');
 const textapi = new aylien({
     application_id: process.env.API_ID,
     application_key: process.env.API_KEY
@@ -42,9 +41,9 @@ const textapi = new aylien({
 app.post('/aylien',(req, res)=>{
     console.log(req.body.url);
     textapi.sentiment({
-        url: req.body.url,
-        mode: 'document'
+        url: req.body.url
       }, function(error, response) {
+        console.log(response)
         res.send(response); 
        });
 });
